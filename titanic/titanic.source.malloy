@@ -1,0 +1,13 @@
+--! styles titanic.styles.json
+
+// define a data source
+source: titanic is table('duckdb:titanic.csv') {
+
+  // define some dimensions
+  dimension: age_bin is floor(Age / 10)
+
+  // define some measures
+  measure: n is count()
+  measure: survived is Survived.sum()
+  measure: survived_rate is Survived.avg()
+}

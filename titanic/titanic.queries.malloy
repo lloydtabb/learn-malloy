@@ -1,0 +1,28 @@
+import "titanic.source.malloy"
+
+// a simple query
+query: titanic -> {
+group_by: Sex
+aggregate: n, survived, survived_rate
+limit: 10
+}
+
+// simple query using a derived dimension
+query: titanic -> {
+group_by: age_bin
+aggregate: n, survived, survived_rate
+order_by: age_bin
+}
+
+// adding _bar_chart suffix will make it render as a bar chart
+query: titanic -> {
+group_by: age_bin
+aggregate: survived_rate
+order_by: age_bin
+}
+
+// this will (TODO: should?) render as bar chart as defined in titanic.styles.json
+query: titanic -> {
+group_by: Sex
+aggregate: n
+}
