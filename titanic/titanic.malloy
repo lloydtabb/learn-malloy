@@ -1,3 +1,5 @@
+--! styles titanic.styles.json
+
 // define a data source
 source: titanic is table('duckdb:titanic.csv') {
 
@@ -21,6 +23,19 @@ source: titanic is table('duckdb:titanic.csv') {
     group_by: age_bin
     aggregate: n, survived, survived_rate
     order_by: age_bin
+  }
+
+  // adding _bar_chart suffix will make it render as a bar chart
+  query: survived_rate_by_age_bin_bar_chart is {
+    group_by: age_bin
+    aggregate: survived_rate
+    order_by: age_bin
+  }
+
+  // this will (TODO: should?) render as bar chart as defined in titanic.styles.json
+  query: n_by_sex is {
+    group_by: Sex
+    aggregate: n
   }
 
 }
