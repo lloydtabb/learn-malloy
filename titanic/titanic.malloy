@@ -1,0 +1,26 @@
+// define a data source
+source: titanic is table('duckdb:titanic.csv') {
+
+  // define some dimensions
+  dimension: age_bin is floor(Age / 10)
+
+  // define some measures
+  measure: n is count()
+  measure: survived is Survived.sum()
+  measure: survived_rate is Survived.avg()
+
+  // a simple query
+  query: survived_by_sex is {
+    group_by: Sex
+    aggregate: n, survived, survived_rate
+    limit: 10
+  }
+
+  // simple query using a derived dimension
+  query: survived_by_age is {
+    group_by: age_bin
+    aggregate: n, survived, survived_rate
+    order_by: age_bin
+  }
+
+}
