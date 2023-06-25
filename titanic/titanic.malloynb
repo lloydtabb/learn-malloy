@@ -1,0 +1,20 @@
+[
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "# Hello",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "malloy",
+    "value": "import \"titanic.source.malloy\"",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "malloy",
+    "value": "query: titanic -> {\n    group_by: Sex\n    aggregate: n, survived, survived_rate\n}",
+    "metadata": {}
+  }
+]

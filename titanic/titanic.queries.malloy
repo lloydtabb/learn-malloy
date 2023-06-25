@@ -1,6 +1,7 @@
 import "titanic.source.malloy"
 
 // a simple query
+# bar_chart
 query: titanic -> {
     group_by: Sex
     aggregate: n, survived, survived_rate
