@@ -2,34 +2,33 @@ import "titanic.source.malloy"
 
 // a simple query
 query: titanic -> {
-group_by: Sex
-aggregate: n, survived, survived_rate
+    group_by: Sex
+    aggregate: n, survived, survived_rate
 }
 
 // simple query using a derived dimension
 query: titanic -> {
-group_by: age_bin
-aggregate: n, survived, survived_rate
-order_by: age_bin
+    group_by: age_bin
+    aggregate: n, survived, survived_rate
+    order_by: age_bin
 }
 
 // multiple group by
 query: titanic -> {
-group_by: Sex, age_bin
-aggregate: n, survived, survived_rate
-order_by: survived_rate desc
-having: n > 10
+    group_by: Sex, age_bin
+    aggregate: n, survived, survived_rate
+    order_by: survived_rate desc
+    having: n > 10
 }
 
 // adding _bar_chart suffix will make it render as a bar chart
 query: titanic -> {
-group_by: age_bin
-aggregate: survived_rate
-order_by: age_bin
+    group_by: age_bin
+    aggregate: survived_rate
+    order_by: age_bin
 }
 
-// this will (TODO: should?) render as bar chart as defined in titanic.styles.json
 query: titanic -> {
-group_by: Sex
-aggregate: n
+    group_by: Sex
+    aggregate: n
 }
